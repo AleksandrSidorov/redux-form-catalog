@@ -18,6 +18,7 @@ import { reducer as reduxFormReducer } from 'redux-form'
 
 import App from './components/App'
 import CreateRecord from './components/CreateRecord'
+import EditRecord from './components/EditRecord'
 
 import records from './reducers/records'
 
@@ -45,6 +46,7 @@ ReactDOM.render(
     <Router {...{history}}>
       <Route path="/" component={App}>
         <Route path="create" component={CreateRecord} />
+        <Route path="edit/:id" component={EditRecord} />
       </Route>
     </Router>
   </Provider>,

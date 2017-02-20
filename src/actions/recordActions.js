@@ -1,6 +1,14 @@
-const recordsActions = {
-	addRecord: record => ({ type: 'ADD_RECORD', record }),
-	updateRecord: (id, record) => ({ type: 'UPDATE_RECORD', id, record })
+export const addRecord = record => {
+	return {
+		type: 'ADD_RECORD',
+		record
+	}
 }
 
-export default recordsActions
+export const updateRecord = (id, record) => {
+	return {
+		type: 'UPDATE_RECORD',
+		id,
+		record
+	}
+}
