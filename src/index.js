@@ -3,8 +3,7 @@ import ReactDOM from 'react-dom'
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux'
 import {
-  indexRoute,
-  Link,
+  IndexRoute,
   Route,
   Router,
   browserHistory
@@ -19,6 +18,7 @@ import { reducer as reduxFormReducer } from 'redux-form'
 import App from './components/App'
 import CreateRecord from './components/CreateRecord'
 import EditRecord from './components/EditRecord'
+import ListRecords from './components/ListRecords'
 
 import records from './reducers/records'
 
@@ -47,6 +47,7 @@ ReactDOM.render(
       <Route path="/" component={App}>
         <Route path="create" component={CreateRecord} />
         <Route path="edit/:id" component={EditRecord} />
+        <IndexRoute component={ListRecords} />
       </Route>
     </Router>
   </Provider>,
