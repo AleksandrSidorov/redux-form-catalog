@@ -10,7 +10,7 @@ class CreateRecord extends React.Component {
 	render() {
 		return (
 			<div>
-				<h2>{'New Person'}</h2>
+				<h2>{'Add a New Person'}</h2>
 				<CreateForm onSubmit={this.props.onSubmit}/>
 				<Link to="/">{'Cancel'}</Link>
 			</div>

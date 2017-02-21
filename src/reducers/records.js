@@ -6,7 +6,7 @@ const records = (state = { maxId: 0, records: {} }, action) => {
 				maxId: state.maxId + 1,
 				records: {
 					...state.records,
-					[action.maxId]: action.record
+					[state.maxId]: action.record
 				}
 			}
 		case 'UPDATE_RECORD':
