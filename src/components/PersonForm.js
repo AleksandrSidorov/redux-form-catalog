@@ -1,6 +1,41 @@
 import React from 'react'
 import { reduxForm, Field } from 'redux-form'
 
+const validate = values => {
+	const errors = {}
+
+	const requiredFields = ['firstName', 'lastName', 'email', 'favoriteColor']
+	requiredFields.forEach(field => {
+		if (!values[ field ]) {
+			errors[ field ] = 'Required'
+		}
+	})
+
+	if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+		errors.email = 'Invalid email address'
+	}
+
+	return errors
+}
+
+const normalizePhone = value => {
+	if (!value) {
+		return value
+	}
+
+	const onlyNums = value.replace(/[^\d]/g, '')
+	
+	if (onlyNums.length <= 3) {
+		return onlyNums
+	}
+
+	if (onlyNums.length <= 7) {
+		return `(${onlyNums.slice(0, 3)})-${onlyNums.slice(3)}`
+	}
+
+	return `(${onlyNums.slice(0, 3)})-${onlyNums.slice(3, 6)}-${onlyNums.slice(6)}`
+}
+
 class PersonForm extends React.Component {
 	render () {
 
@@ -30,7 +65,7 @@ class PersonForm extends React.Component {
 				<div>
 					<label>Phone</label>
 					<div>
-						<Field name="phone" component="input" type="tel" placeholder="Phone" />
+						<Field name="phone" component="input" normalize={normalizePhone} type="tel" placeholder="Phone" />
 					</div>
 				</div>
 				<div>
@@ -74,8 +109,10 @@ class PersonForm extends React.Component {
 
 export const CreateForm = reduxForm({
 	form: 'createForm',
+	validate
 })(PersonForm)
 
 export const EditForm = reduxForm({
 	form: 'editForm',
+	validate
 })(PersonForm)
