@@ -14,6 +14,7 @@ import {
   routerMiddleware
 } from 'react-router-redux'
 import { reducer as reduxFormReducer } from 'redux-form'
+import injectTapEventPlugin from 'react-tap-event-plugin'
 
 import App from './components/App'
 import CreateRecord from './components/CreateRecord'
@@ -40,6 +41,8 @@ const store = createStore(
 )
 
 const history = syncHistoryWithStore(browserHistory, store)
+
+injectTapEventPlugin()
 
 ReactDOM.render(
   <Provider {...{store}}>

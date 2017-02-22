@@ -1,5 +1,6 @@
 import React from 'react'
 import { reduxForm, Field } from 'redux-form'
+import { TextField, CheckBox, SelectField, MenuItem } from 'material-ui'
 
 const validate = values => {
 	const errors = {}
@@ -24,7 +25,7 @@ const normalizePhone = value => {
 	}
 
 	const onlyNums = value.replace(/[^\d]/g, '')
-	
+
 	if (onlyNums.length <= 3) {
 		return onlyNums
 	}
@@ -35,6 +36,24 @@ const normalizePhone = value => {
 
 	return `(${onlyNums.slice(0, 3)})-${onlyNums.slice(3, 6)}-${onlyNums.slice(6)}`
 }
+const renderCheckbox = ({ input, label }) => {
+	<CheckBox
+		label={label}
+		checked={input.value ? true : false}
+		onCheck={input.onChange}
+	/>
+}
+
+const renderTextField = ({ input, label, meta: { touched, error }, ...custom }) => {
+	<TextField
+		hintText={label}
+		floatingLabelText={label}
+		errorText={touched && error}
+		{...input}
+		{...custom}
+	/>
+}
+
 
 class PersonForm extends React.Component {
 	render () {
@@ -47,13 +66,13 @@ class PersonForm extends React.Component {
 				<div>
 					<label>First Name</label>
 					<div>
-						<Field name="firstName" component="input" type="text" placeholder="First Name" />
+						<Field name="firstName" component={renderTextField} placeholder="First Name" />
 					</div>
 				</div>
 				<div>
 					<label>Last Name</label>
 					<div>
-						<Field name="lastName" component="input" type="text" placeholder="Last Name" />
+						<Field name="lastName" component={renderTextField} placeholder="Last Name" />
 					</div>
 				</div>
 				<div>
