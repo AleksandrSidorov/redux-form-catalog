@@ -7,7 +7,7 @@ import { EditForm } from './PersonForm'
 
 class EditRecord extends React.Component {
 	render () {
-		
+
 		const { id, record } = this.props
 		const initialValues = record
 		return (
@@ -21,19 +21,19 @@ class EditRecord extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-	
+
 	const {
 		params: {
 			id
 		}
 	} = ownProps
-	
+
 	const {
 		records: {
 			records
 		}
 	} = state
-	
+
 	return {
 		id,
 		record: records[id]
@@ -43,7 +43,6 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
 	return {
 		onSubmit: (id, values) => {
-			console.log(values)
 			dispatch(updateRecord(id, values))
 		}
 	}

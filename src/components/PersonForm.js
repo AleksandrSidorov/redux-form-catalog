@@ -9,6 +9,7 @@ import {
 	RadioButtonGroup,
 	RaisedButton
 } from 'material-ui'
+import { browserHistory } from 'react-router'
 
 const validate = values => {
 	const errors = {}
@@ -131,10 +132,16 @@ class PersonForm extends React.Component {
 
 export const CreateForm = reduxForm({
 	form: 'createForm',
-	validate
+	validate,
+	onSubmitSuccess: () => {
+		browserHistory.push('/')
+	}
 })(PersonForm)
 
 export const EditForm = reduxForm({
 	form: 'editForm',
-	validate
+	validate,
+	onSubmitSuccess: () => {
+		browserHistory.push('/')
+	}
 })(PersonForm)
