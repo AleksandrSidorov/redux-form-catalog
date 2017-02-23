@@ -22,6 +22,22 @@ import ListRecords from './components/ListRecords'
 
 import records from './reducers/records'
 
+const initialState = {
+  maxId: 1,
+  records: {
+    '0': {
+      firstName: 'Jonh',
+      lastName: 'Doe',
+      email: 'johndoe@foo.net',
+      phone: '(555)-555-5555',
+      sex: 'male',
+      favoriteColor: 'ff0000',
+      employed: false,
+      notes: 'Some important notes.'
+    }
+  }
+}
+
 const reducer = combineReducers({
     records,
     routing: routerReducer,
@@ -34,6 +50,7 @@ const middleware = routerMiddleware(browserHistory)
 
 const store = createStore(
   reducer,
+  { records: initialState },
   composeEnchanters(
     applyMiddleware(middleware)
   )
