@@ -11,6 +11,8 @@ import {
 } from 'material-ui'
 import { browserHistory } from 'react-router'
 
+import './PersonForm.css'
+
 const validate = values => {
 	const errors = {}
 
@@ -51,6 +53,7 @@ const renderTextField = ({ input, label, meta: { touched, error }, ...custom }) 
 		hintText={label}
     floatingLabelText={label}
     errorText={touched && error}
+		style={{ maxWidth: '500px', width: '100%' }}
     {...input}
     {...custom}
   />
@@ -89,41 +92,54 @@ class PersonForm extends React.Component {
 
 		return (
 			<form onSubmit={handleSubmit}>
-				<h3>form</h3>
-				<div>
+				<div className="input-wrapper">
 					<Field name="firstName" component={renderTextField} label="First Name" />
 				</div>
-				<div>
+				<div className="input-wrapper">
 					<Field name="lastName" component={renderTextField} label="Last Name" />
 				</div>
-				<div>
+				<div className="input-wrapper">
 					<Field name="email" component={renderTextField} label="Email" />
 				</div>
-				<div>
+				<div className="input-wrapper">
 					<Field name="phone" component={renderTextField} normalize={normalizePhone} label="Phone" />
 				</div>
-				<div>
+				<div className="input-wrapper">
 					<Field name="sex" component={renderRadioGroup}>
 						<RadioButton value="male" label="male" />
 						<RadioButton value="female" label="female" />
 					</Field>
 				</div>
-				<div>
+				<div className="input-wrapper">
 					<Field name="favoriteColor" component={renderSelectField} label="Favorite Color">
 						<MenuItem value={'ff0000'} primaryText="Red" />
 						<MenuItem value={'00ff00'} primaryText="Green" />
 						<MenuItem value={'0000ff'} primaryText="Blue" />
 					</Field>
 				</div>
-				<div>
+				<div className="input-wrapper">
 					<Field name="employed" component={renderCheckbox} label="Employed" />
 				</div>
-				<div>
+				<div className="input-wrapper">
 					<Field name="notes" component={renderTextField} label="Notes" multiLine={true} rows={3} />
 				</div>
-				<div>
-					<RaisedButton type="submit" primary={true} disabled={pristine || submitting}>Submit</RaisedButton>
-					<RaisedButton type="button" secondary={true} disabled={pristine || submitting} onClick={reset}>Clear Values</RaisedButton>
+				<div className="button-group input-wrapper">
+					<RaisedButton
+						type="submit"
+						primary={true}
+						disabled={pristine || submitting}
+						style={{ marginRight: '24px', }}
+						className="button">
+						Submit
+					</RaisedButton>
+					<RaisedButton
+						type="button"
+						className="button"
+						secondary={true}
+						disabled={pristine || submitting}
+						onClick={reset}>
+						Clear Values
+					</RaisedButton>
 				</div>
 			</form>
 		)

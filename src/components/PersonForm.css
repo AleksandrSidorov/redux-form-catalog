@@ -1,0 +1,12 @@
+.button {
+  width: 150px;
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+}
+
+.input-wrapper {
+  margin: 10px 0;
+}
