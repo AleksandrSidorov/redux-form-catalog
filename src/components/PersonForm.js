@@ -45,7 +45,7 @@ const normalizePhone = value => {
 		return `(${onlyNums.slice(0, 3)})-${onlyNums.slice(3)}`
 	}
 
-	return `(${onlyNums.slice(0, 3)})-${onlyNums.slice(3, 6)}-${onlyNums.slice(6)}`
+	return `(${onlyNums.slice(0, 3)})-${onlyNums.slice(3, 6)}-${onlyNums.slice(6, 10)}`
 }
 
 const renderTextField = ({ input, label, meta: { touched, error }, ...custom }) => (
@@ -121,7 +121,13 @@ class PersonForm extends React.Component {
 					<Field name="employed" component={renderCheckbox} label="Employed" />
 				</div>
 				<div className="input-wrapper">
-					<Field name="notes" component={renderTextField} label="Notes" multiLine={true} rows={3} />
+					<Field
+						name="notes"
+						component={renderTextField}
+						label="Notes"
+						multiLine={true}
+						rows={3}
+					/>
 				</div>
 				<div className="button-group input-wrapper">
 					<RaisedButton

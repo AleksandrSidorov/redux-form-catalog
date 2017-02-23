@@ -23,7 +23,7 @@ import ListRecords from './components/ListRecords'
 import records from './reducers/records'
 
 const initialState = {
-  maxId: 1,
+  maxId: 2,
   records: {
     '0': {
       firstName: 'Jonh',
@@ -34,6 +34,16 @@ const initialState = {
       favoriteColor: 'ff0000',
       employed: false,
       notes: 'Some important notes.'
+    },
+    '1': {
+      firstName: 'Jane',
+      lastName: 'Doe',
+      email: 'janedoe@bar.net',
+      phone: '(333)-333-3333',
+      sex: 'female',
+      favoriteColor: '00ff00',
+      employed: true,
+      notes: 'Some significant notes.'
     }
   }
 }
